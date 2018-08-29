@@ -1,0 +1,5 @@
+filename: src/apis/client.js
+engine: handlebars
+template: api
+mapping:
+  paths: /paths

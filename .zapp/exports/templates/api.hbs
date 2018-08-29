@@ -1,0 +1,18 @@
+import axios from 'axios';
+
+const ClientAPI = {
+  {{#each paths}}
+  {{#each this}}
+  {{{case @key 'camel'}}}{{{case @../key 'pascal'}}}: ({ params, body, query } = {}) => {
+    return axios({
+      method: '{{{@key}}}',
+      params: query,
+      url: `${CONFIG.api.origin}{{{uri @../key}}}`{{#any @key 'patch' 'post'}},
+      data: body{{/any}}
+    });
+  },
+  {{/each}}
+  {{/each}}
+};
+
+export default ClientAPI;
